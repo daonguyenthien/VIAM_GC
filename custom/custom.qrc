@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/CustomSliderMassPiston.qml</file>
+        <file>qml/BatteryHeadIndicator.qml</file>
+        <file>qml/BatteryTailIndicator.qml</file>
+        <file>qml/BatteryMotorIndicator.qml</file>
+        <file>qml/SpeedNeedle.qml</file>
+        <file>qml/SpeedMeter.qml</file>
+        <file>qml/CustomThrusterFlightView.qml</file>
+        <file>qml/AngleNeedle.qml</file>
+        <file>qml/RudderMeter.qml</file>
+        <file>qml/CustomRudderStatus.qml</file>
+        <file>res/collapse.png</file>
+        <file>res/Custom_clock.png</file>
+        <file>res/Custom_rudder.png</file>
+        <file>res/expand.png</file>
+        <file>res/APMBrandImageAUV2000.png</file>
+        <file alias="PaperPlane.svg">res/viam_auv2000_full_white.svg</file>
+    </qresource>
+</RCC>
