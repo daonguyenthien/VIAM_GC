@@ -9,6 +9,10 @@ CustomMode::CustomMode(uint32_t mode, bool settable) : _mode(mode), _settable(se
   QMap<uint32_t, QString> enumToString;
   enumToString.insert(AUTO_HEADING, "Auto Heading");
   enumToString.insert(LOS_STRAIGHT, "LOS Straight");
+  enumToString.insert(LOS_BSPLINE, "LOS BSpline");
+  enumToString.insert(LOS_SBG, "LOS SBG");
+  enumToString.insert(LOS_DUBINS, "LOS Dubins");
+  enumToString.insert(LOS_FERMAT, "LOS Fermat");
   setEnumToStringMapping(enumToString);
 }
 
@@ -27,13 +31,16 @@ CustomFirmwarePlugin::CustomFirmwarePlugin()
   QList<CustomMode> supportedFlightModes;
   supportedFlightModes << CustomMode(CustomMode::AUTO_HEADING, true);
   supportedFlightModes << CustomMode(CustomMode::LOS_STRAIGHT, true);
+  supportedFlightModes << CustomMode(CustomMode::LOS_BSPLINE, true);
+  supportedFlightModes << CustomMode(CustomMode::LOS_SBG, true);
+  supportedFlightModes << CustomMode(CustomMode::LOS_DUBINS, true);
+  supportedFlightModes << CustomMode(CustomMode::LOS_FERMAT, true);
   setSupportedModes(supportedFlightModes);
 
   _factRenameMap[QStringLiteral("flightTime")] = QStringLiteral("Travelled Time");
   _factRenameMap[QStringLiteral("altitudeAMSL")] = QStringLiteral("Depth");
 }
 
-CustomFirmwarePlugin::~CustomFirmwarePlugin() {}
 
 AutoPilotPlugin* CustomFirmwarePlugin::autopilotPlugin(Vehicle* vehicle)
 {

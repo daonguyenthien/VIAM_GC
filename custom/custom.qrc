@@ -1,9 +1,9 @@
 <RCC>
     <qresource prefix="/">
+        <file>res/CustomFlyViewOverlay.qml</file>
         <file>qml/CustomSliderMassPiston.qml</file>
         <file>qml/BatteryHeadIndicator.qml</file>
         <file>qml/BatteryTailIndicator.qml</file>
-        <file>qml/BatteryMotorIndicator.qml</file>
         <file>qml/SpeedNeedle.qml</file>
         <file>qml/SpeedMeter.qml</file>
         <file>qml/CustomThrusterFlightView.qml</file>
@@ -16,5 +16,11 @@
         <file>res/expand.png</file>
         <file>res/APMBrandImageAUV2000.png</file>
         <file alias="PaperPlane.svg">res/viam_auv2000_full_white.svg</file>
+    </qresource>
+    <qresource prefix="/custom/img">
+        <file alias="CustomAppIcon.png">res/Images/CustomAppIcon.png</file>
+    </qresource>
+    <qresource prefix="/qmlimages">
+        <file alias="PaperPlane.svg">res/Images/CustomVehicleIcon.svg</file>
     </qresource>
 </RCC>

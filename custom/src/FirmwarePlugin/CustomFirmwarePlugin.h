@@ -17,6 +17,10 @@ public:
   {
     AUTO_HEADING = 1,
     LOS_STRAIGHT = 2,
+    LOS_BSPLINE = 3,
+    LOS_SBG = 4,
+    LOS_DUBINS = 5,
+    LOS_FERMAT = 6,
   };
 
 protected:
@@ -33,7 +37,7 @@ class CustomFirmwarePlugin : public FirmwarePlugin
   Q_OBJECT
 public:
   CustomFirmwarePlugin();
-  ~CustomFirmwarePlugin() override;
+  //~CustomFirmwarePlugin() override;
 
   AutoPilotPlugin* autopilotPlugin(Vehicle* vehicle) override;
   bool isCapable(const Vehicle* vehicle, FirmwareCapabilities capabilities) override;
