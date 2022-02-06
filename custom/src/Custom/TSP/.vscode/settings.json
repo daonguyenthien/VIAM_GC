@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "tsp.h": "c",
+        "string_view": "cpp",
+        "optional": "cpp",
+        "system_error": "cpp",
+        "limits": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "ostream": "cpp",
+        "cmath": "cpp",
+        "algorithm": "cpp"
+    }
+}
