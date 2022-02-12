@@ -166,13 +166,13 @@ Item {
                     tickmarksEnabled:   true
 //                    onValueChanged: {
 //                        slideMass_Shifter.value = _valueMassShifter
-//                    }
+//                   }
                 } // Slider
 
                 QGCLabel {
                     id:     maxLabelMassShifter
                     width:  ScreenTools.defaultFontPixelWidth * 5
-                    text:   _maxValueMassShifter.toFixed(precision)                    
+                    text:   _maxValueMassShifter.toFixed(precision)
                 }
 
                 Rectangle {
@@ -346,7 +346,7 @@ Item {
                     id:                  minLabelPiston
                     width:               ScreenTools.defaultFontPixelWidth * 4
                     text:                _minValuePiston.toFixed(precision)
-                    horizontalAlignment: Text.AlignRight                    
+                    horizontalAlignment: Text.AlignRight
                 }
 
                 QGCSlider {
@@ -479,3 +479,8 @@ Item {
         }
     }
 }
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/

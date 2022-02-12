@@ -25,6 +25,8 @@ Item {
     property real _temperature:     _activeVehicle.rudderTemperature
     property real _voltage:  _activeVehicle.rudderVoltage
     property real _load:   _activeVehicle.rudderLoad
+    property real _minRudderAngle: -60
+    property real _maxRudderAngle: 60
 
     property int precision: 2
 
@@ -36,17 +38,60 @@ Item {
         anchors.leftMargin: ScreenTools.defaultFontPixelWidth * 2.5
         anchors.bottom:         parent.bottom
         anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 180
-        width: 260; height: 150
+        width: 260; height: 180
         border.color: "white"
         radius: 8
         color: "#801F1F1F"
 
         Rectangle{
+            id: rudderSlider
+            anchors.verticalCenter: parent
+            anchors.top:   coverRudderMeter.bottom
+            anchors.topMargin: ScreenTools.defaultFontPixelWidth  + 2
+            anchors.left: parent.left
+            anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 10
+
+            Row{
+               width: parent.width
+               spacing: 2
+
+               QGCLabel{
+                   id: minLabelRudder
+                   width: ScreenTools.defaultFontPixelWidth * 4
+                   text: _minRudderAngle.toFixed(precision)
+                   horizontalAlignment: Text.AlignRight
+
+               }
+
+               QGCSlider{
+                   id:                 slideRudder
+                   width:              160
+                   maximumValue:       _maxRudderAngle.toFixed(precision)
+                   minimumValue:       _minRudderAngle.toFixed(precision)
+                   stepSize:           0.1
+                   value:              _position
+                   tickmarksEnabled:   true
+//                    onValueChanged: {
+//                        slideRudder.value = _position
+//                    }
+               }
+
+               QGCLabel{
+                   id: maxLabelRudder
+                   width: ScreenTools.defaultFontPixelWidth * 4
+                   text: _maxRudderAngle.toFixed(precision)
+               }
+            }
+
+       }
+
+        Rectangle{
             id: coverRudderMeter
             anchors.left: parent.left
             anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 2
-            anchors.bottom:         parent.bottom
+            anchors.top:         parent.top
             anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 2
+            anchors.topMargin: ScreenTools.defaultFontPixelWidth + 2
             width: 130; height: 130
             color: "transparent"
 
@@ -112,5 +157,6 @@ Item {
                 }
             }
         }
+
     }
 }

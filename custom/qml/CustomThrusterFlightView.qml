@@ -24,10 +24,12 @@ Item {
     /// Thruster Status
     property real _dutyCycle:   _activeVehicle.thrusterDuty
     property real _rSpeed:      _activeVehicle.thrusterRSpeed
-    property real _current:      _activeVehicle.thrusterCurrent
+    property real _current:     _activeVehicle.thrusterCurrent
     property real _dSpeed:      _activeVehicle.thrusterDSpeed
     property real _tempOnChip:  _activeVehicle.thrusterTempOnChip
     property real _tempMotor:   _activeVehicle.thrusterTempAmbient
+    property real _minValueThruster : 0
+    property real _maxValueThruster : 1750
 
     property bool _visibleDialogDutyCycle: false
     property int precision: 2
@@ -35,17 +37,23 @@ Item {
     Rectangle{
         id: rectangle
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: ScreenTools.defaultFontPixelWidth * 27
+        anchors.horizontalCenterOffset: ScreenTools.defaultFontPixelWidth * 31
         anchors.bottom:         parent.bottom
         anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 2
-        width: 320; height: 166
+        width: 400; height: 220
         border.color: "white"
         radius: 8
         color: "#801F1F1F"
 
         Rectangle{
             id: coverSpeedMeter
-            x: 8; y: 8
+            anchors{
+                left: parent.left
+                leftMargin: ScreenTools.defaultFontPixelWidth + 15
+                top: parent.top
+                topMargin: ScreenTools.defaultFontPixelWidth + 7
+            }
+
             width: 149; height: 149
             color: "transparent"
 
@@ -79,7 +87,7 @@ Item {
                     spacing: 3
 
                     QGCLabel {
-                        x: statusThruster.width/2 - 45
+                        x: statusThruster.width/2 - 35
                         text:           qsTr("Duty Cycle: ") + _dutyCycle.toFixed(precision) + qsTr(" %")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
@@ -100,41 +108,91 @@ Item {
 
                     QGCLabel {
                         x: statusThruster.width/2 - 35
-                        text:           qsTr("DSpeed: ") + _dSpeed.toFixed(precision) + qsTr(" RPM")
+                        text:           qsTr("DSpeed:      ") + _dSpeed.toFixed(precision) + qsTr(" RPM")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
 
                     QGCLabel {
                         x: statusThruster.width/2 - 35
-                        text:           qsTr("rSpeed: ") + _rSpeed.toFixed(precision) + qsTr(" RPM")
+                        text:           qsTr("rSpeed:       ") + _rSpeed.toFixed(precision) + qsTr(" RPM")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
 
                     QGCLabel {
                         x: statusThruster.width/2 - 35
-                        text:           qsTr("Current: ") + _current.toFixed(precision) + qsTr(" mA")
+                        text:           qsTr("Current:      ") + _current.toFixed(precision) + qsTr(" mA")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
 
                     QGCLabel {
-                        x: statusThruster.width/2 - 42
+                        x: statusThruster.width/2 - 35
                         text:           qsTr("Temp on Chip: ") + _tempOnChip.toFixed(precision) + qsTr(" oC")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
 
                     QGCLabel {
-                        x: statusThruster.width/2 - 52
-                        text:           qsTr("Temp Motor: ") + _tempMotor.toFixed(precision) + qsTr(" oC")
+                        x: statusThruster.width/2 - 35
+                        text:           qsTr("Temp Motor:    ") + _tempMotor.toFixed(precision) + qsTr(" oC")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
                 }
             }
         }
+
+        Rectangle{
+            id: thrusterSlider
+            anchors.verticalCenter: parent
+            anchors.top:  coverSpeedMeter.bottom
+            anchors.topMargin: ScreenTools.defaultFontPixelWidth  + 5
+            anchors.left: parent.left
+            anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 5
+
+            Column{
+                id: thrusterSlidercolumn
+
+                Row{
+                   width: parent.width
+                   spacing: 3
+
+                   QGCLabel{
+                       id: minLabelThruster
+                       width: ScreenTools.defaultFontPixelWidth * 4
+                       text: _minValueThruster.toFixed(precision)
+                       horizontalAlignment: Text.AlignRight
+
+                   }
+
+                   QGCSlider{
+                       id:                 slideThruster
+                       width:              270
+                       maximumValue:       _maxValueThruster.toFixed(precision)
+                       minimumValue:       _minValueThruster.toFixed(precision)
+                       stepSize:           0.1
+                       value:              _rSpeed
+                       tickmarksEnabled:   true
+    //                    onValueChanged: {
+    //                        slideThruster.value = _rSpeed
+    //                    }
+                   }
+
+                   QGCLabel{
+                       id: maxLabelThruster
+                       width: ScreenTools.defaultFontPixelWidth * 4
+                       text: _maxValueThruster.toFixed(precision)
+                   }
+
+                }
+
+            }
+
+
+
+       }
     }
 
     Rectangle{
