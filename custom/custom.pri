@@ -102,4 +102,5 @@ DISTFILES += \
     $$PWD/res/Custom_rudder.png \
     $$PWD/res/expand.png \
     $$PWD/res/APMBrandImageAUV2000.png \
-    $$PWD/res/viam_auv2000_full_white.svg
+    $$PWD/res/viam_auv2000_full_white.svg \
+    $$PWD/qml/VideoStreamingandRecording.qml
