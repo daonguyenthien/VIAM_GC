@@ -32,8 +32,8 @@ Item {
     property real   _tempMotor_Mass:   _activeVehicle.mass_shifterTempAmbient
 
     ///Property for Piston
-    property real   _valuePiston: _activeVehicle.pistonPosition * 0.1
-    property real   _maxValuePiston: 8.0
+    property real   _valuePiston:  Math.abs(_activeVehicle.pistonPosition * 0.1)
+    property real   _maxValuePiston: 5.0
     property real   _minValuePiston: 0.0
     property real   _rangePiston:         Math.abs(_maxValuePiston - _minValuePiston)
     property real   _minIncrementPiston:  _rangePiston/50

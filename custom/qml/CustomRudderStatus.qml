@@ -38,7 +38,7 @@ Item {
         anchors.leftMargin: ScreenTools.defaultFontPixelWidth * 2.5
         anchors.bottom:         parent.bottom
         anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 180
-        width: 260; height: 180
+        width: 280; height: 180
         border.color: "white"
         radius: 8
         color: "#801F1F1F"
@@ -65,7 +65,7 @@ Item {
 
                QGCSlider{
                    id:                 slideRudder
-                   width:              160
+                   width:              180
                    maximumValue:       _maxRudderAngle.toFixed(precision)
                    minimumValue:       _minRudderAngle.toFixed(precision)
                    stepSize:           0.1
@@ -107,7 +107,9 @@ Item {
             x: parent.width/2 - 30
             anchors{
                 top: parent.top
+                topMargin: 2
                 right: parent.right
+                rightMargin: 8
                 bottom: parent.bottom
             }
 
@@ -132,13 +134,13 @@ Item {
 
                     QGCLabel {
                         x: coverStatus.width/2 - 42
-                        text:           qsTr("Speed: ") + _speed.toFixed(precision) + qsTr(" RPM")
+                        text:           qsTr("  Speed:   ") + _speed.toFixed(precision) + qsTr(" RPM")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
                     QGCLabel {
                         x: coverStatus.width/2 - 35
-                        text:           qsTr("Temp: ") + _temperature.toFixed(precision) + qsTr(" oC")
+                        text:           qsTr("Temp:    ") + _temperature.toFixed(precision) + qsTr(" oC")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
@@ -150,7 +152,7 @@ Item {
                     }
                     QGCLabel {
                         x: coverStatus.width/2 - 42
-                        text:           qsTr("Load: ") + _load.toFixed(precision) + qsTr(" N.m")
+                        text:           qsTr("  Load:      ") + _load.toFixed(precision) + qsTr(" N.m")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }

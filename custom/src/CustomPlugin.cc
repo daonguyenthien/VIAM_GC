@@ -47,7 +47,8 @@ QmlObjectListModel* CustomPlugin::customMapItems(void)
       new QmlComponentInfo(tr("Custom Rudder"), QUrl::fromUserInput("qrc:/qml/CustomRudderStatus.qml"), QUrl(), this));
   _customMapItems.append(
       new QmlComponentInfo(tr("Custom VideoStream"), QUrl::fromUserInput("qrc:/qml/VideoStreamingandRecording.qml"), QUrl(), this));
-
+  _customMapItems.append(
+        new QmlComponentInfo(tr("Custom Water in Piston"), QUrl::fromUserInput("qrc:/qml/WaterFillInPiston.qml"), QUrl(), this));
   return &_customMapItems;
 }
 

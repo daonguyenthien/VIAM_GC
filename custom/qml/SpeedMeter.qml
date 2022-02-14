@@ -7,10 +7,10 @@ Item {
         Rectangle {
             id: id_speed
 
-            property int numberIndexs: 15
-            property int startAngle: 234
-            property int angleLength: 18
-            property int maxSpeed: 1750
+            property int numberIndexs: 11
+            property int startAngle: 240
+            property int angleLength: 24
+            property int maxSpeed: 500
 
             anchors.centerIn: parent
             height: Math.min(id_root.width, id_root.height)
@@ -22,6 +22,7 @@ Item {
 
             Canvas {
                 id:canvas
+                visible: true
                 anchors.fill: parent
                 contextType: "2d"
                 rotation: 145
@@ -71,7 +72,8 @@ Item {
                         color: "light green"
                         rotation: 360 - (index * id_speed.angleLength + id_speed.startAngle)
                         text: index * (id_speed.maxSpeed / (id_speed.numberIndexs - 1))
-                        font.pixelSize: id_speed.height * 0.05
+                        font.letterSpacing: 0.4
+                        font.pixelSize: id_speed.height * 0.07
 //                        font.family: "Comic Sans MS"
                     }
                 }
@@ -92,9 +94,10 @@ Item {
             anchors {
                 horizontalCenter: parent.horizontalCenter
                 top: id_speed.verticalCenter
-                topMargin: id_speed.height * 0.1
             }
-            text: "Speed\n RPM"
+            text: "rSpeed\n RPM"
+            anchors.horizontalCenterOffset: 0
+            anchors.topMargin: 30
             horizontalAlignment: Text.AlignHCenter
             color: "light green"
             font.pixelSize: id_speed.height * 0.1
@@ -113,3 +116,8 @@ Item {
             angleLength: id_speed.angleLength / (id_speed.maxSpeed / (id_speed.numberIndexs - 1))
         }
 }
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/

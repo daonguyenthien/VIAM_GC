@@ -103,4 +103,5 @@ DISTFILES += \
     $$PWD/res/expand.png \
     $$PWD/res/APMBrandImageAUV2000.png \
     $$PWD/res/viam_auv2000_full_white.svg \
-    $$PWD/qml/VideoStreamingandRecording.qml
+    $$PWD/qml/VideoStreamingandRecording.qml \
+    $$PWD/qml/WaterFillInPiston.qml

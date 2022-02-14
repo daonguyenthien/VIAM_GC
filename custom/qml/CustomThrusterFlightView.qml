@@ -29,18 +29,19 @@ Item {
     property real _tempOnChip:  _activeVehicle.thrusterTempOnChip
     property real _tempMotor:   _activeVehicle.thrusterTempAmbient
     property real _minValueThruster : 0
-    property real _maxValueThruster : 1750
+    property real _maxValueThruster : 500
+    property bool _Direction: // _activeVehicle.thruster
 
     property bool _visibleDialogDutyCycle: false
     property int precision: 2
 
     Rectangle{
         id: rectangle
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: ScreenTools.defaultFontPixelWidth * 31
+        anchors.right: parent.right
+        anchors.rightMargin: ScreenTools.defaultFontPixelWidth * 10
         anchors.bottom:         parent.bottom
         anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 2
-        width: 400; height: 220
+        width: 320; height: 215
         border.color: "white"
         radius: 8
         color: "#801F1F1F"
@@ -49,12 +50,12 @@ Item {
             id: coverSpeedMeter
             anchors{
                 left: parent.left
-                leftMargin: ScreenTools.defaultFontPixelWidth + 15
+                leftMargin: ScreenTools.defaultFontPixelWidth + 5
                 top: parent.top
-                topMargin: ScreenTools.defaultFontPixelWidth + 7
+                topMargin: ScreenTools.defaultFontPixelWidth
             }
 
-            width: 149; height: 149
+            width: 130; height: 149
             color: "transparent"
 
             SpeedMeter {
@@ -66,7 +67,12 @@ Item {
 
         Rectangle{
             id: statusThruster
-            x: parent.width/2 - 30; y: 8
+            anchors{
+                left: coverSpeedMeter.right
+                top:  parent.top
+                topMargin: 5
+           }
+
             width: 149; height: 149
             color: "transparent"
             Column{
@@ -74,7 +80,7 @@ Item {
 
                 QGCLabel {
                     id: thrusterStatusText
-                    x: statusThruster.width/2 - 40
+                    x: statusThruster.width/2 - 50
                     text:           qsTr("Thruster Status")
                     font.family:    ScreenTools.normalFontFamily
                     font.bold:      true
@@ -82,7 +88,7 @@ Item {
                 }
 
                 Column{
-                    x: statusThruster.width/2 - 80
+                    x: statusThruster.width/2 - 95
                     y: 6
                     spacing: 3
 
@@ -140,6 +146,13 @@ Item {
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
                     }
+
+                    QGCLabel {
+                        x: statusThruster.width/2 - 35
+                        text:           qsTr("Direction:    ")
+                        font.family:    ScreenTools.normalFontFamily
+                        font.pointSize:      10
+                    }
                 }
             }
         }
@@ -148,7 +161,7 @@ Item {
             id: thrusterSlider
             anchors.verticalCenter: parent
             anchors.top:  coverSpeedMeter.bottom
-            anchors.topMargin: ScreenTools.defaultFontPixelWidth  + 5
+            anchors.topMargin: ScreenTools.defaultFontPixelWidth  + 9
             anchors.left: parent.left
             anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 5
 
@@ -169,7 +182,7 @@ Item {
 
                    QGCSlider{
                        id:                 slideThruster
-                       width:              270
+                       width:              210
                        maximumValue:       _maxValueThruster.toFixed(precision)
                        minimumValue:       _minValueThruster.toFixed(precision)
                        stepSize:           0.1
