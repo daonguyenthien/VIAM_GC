@@ -30,21 +30,22 @@ Item {
     property real _tempMotor:   _activeVehicle.thrusterTempAmbient
     property real _minValueThruster : 0
     property real _maxValueThruster : 500
-    property bool _Direction: // _activeVehicle.thruster
+    //property bool _Direction: // _activeVehicle.thruster
 
     property bool _visibleDialogDutyCycle: false
     property int precision: 2
 
     Rectangle{
         id: rectangle
-        anchors.right: parent.right
-        anchors.rightMargin: ScreenTools.defaultFontPixelWidth * 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: ScreenTools.defaultFontPixelWidth * 56
         anchors.bottom:         parent.bottom
         anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 2
         width: 320; height: 215
         border.color: "white"
-        radius: 8
-        color: "#801F1F1F"
+        radius: 10
+        color: "#020f21"     //"#801F1F1F"
+        border.width: 3
 
         Rectangle{
             id: coverSpeedMeter
@@ -80,8 +81,8 @@ Item {
 
                 QGCLabel {
                     id: thrusterStatusText
-                    x: statusThruster.width/2 - 50
-                    text:           qsTr("Thruster Status")
+                    x: statusThruster.width/2 - 60
+                    text:           qsTr("THRUSTER STATUS")
                     font.family:    ScreenTools.normalFontFamily
                     font.bold:      true
                     font.pointSize:      12
@@ -97,6 +98,7 @@ Item {
                         text:           qsTr("Duty Cycle: ") + _dutyCycle.toFixed(precision) + qsTr(" %")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold:      true
 
 //                        MouseArea {
 //                            id: mouseClicked
@@ -117,6 +119,7 @@ Item {
                         text:           qsTr("DSpeed:      ") + _dSpeed.toFixed(precision) + qsTr(" RPM")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold:      true
                     }
 
                     QGCLabel {
@@ -124,6 +127,7 @@ Item {
                         text:           qsTr("rSpeed:       ") + _rSpeed.toFixed(precision) + qsTr(" RPM")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold:      true
                     }
 
                     QGCLabel {
@@ -131,6 +135,7 @@ Item {
                         text:           qsTr("Current:      ") + _current.toFixed(precision) + qsTr(" mA")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold:      true
                     }
 
                     QGCLabel {
@@ -138,6 +143,7 @@ Item {
                         text:           qsTr("Temp on Chip: ") + _tempOnChip.toFixed(precision) + qsTr(" oC")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold:      true
                     }
 
                     QGCLabel {
@@ -145,6 +151,7 @@ Item {
                         text:           qsTr("Temp Motor:    ") + _tempMotor.toFixed(precision) + qsTr(" oC")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold:      true
                     }
 
                     QGCLabel {
@@ -152,6 +159,7 @@ Item {
                         text:           qsTr("Direction:    ")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold:      true
                     }
                 }
             }
@@ -161,7 +169,7 @@ Item {
             id: thrusterSlider
             anchors.verticalCenter: parent
             anchors.top:  coverSpeedMeter.bottom
-            anchors.topMargin: ScreenTools.defaultFontPixelWidth  + 9
+            anchors.topMargin: ScreenTools.defaultFontPixelWidth  + 12
             anchors.left: parent.left
             anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 5
 
@@ -177,12 +185,13 @@ Item {
                        width: ScreenTools.defaultFontPixelWidth * 4
                        text: _minValueThruster.toFixed(precision)
                        horizontalAlignment: Text.AlignRight
+                       font.bold:      true
 
                    }
 
                    QGCSlider{
                        id:                 slideThruster
-                       width:              210
+                       width:              200
                        maximumValue:       _maxValueThruster.toFixed(precision)
                        minimumValue:       _minValueThruster.toFixed(precision)
                        stepSize:           0.1
@@ -197,9 +206,11 @@ Item {
                        id: maxLabelThruster
                        width: ScreenTools.defaultFontPixelWidth * 4
                        text: _maxValueThruster.toFixed(precision)
+                       font.bold:      true
                    }
 
                 }
+
 
             }
 

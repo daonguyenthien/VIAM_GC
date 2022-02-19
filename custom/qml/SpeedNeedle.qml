@@ -12,7 +12,7 @@ Item {
 
         Image {
             id: arrow
-            width: 150; height: 150
+            width: 150; height: 130
             anchors{
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.verticalCenter

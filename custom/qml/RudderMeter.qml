@@ -19,9 +19,9 @@ Item {
         height: Math.min(id_root.width, id_root.height)
         width: height
         radius: width/2
-        color: "transparent"
+        color: "black"
         border.color: "white"
-        border.width: id_rudder.height * 0.02
+        border.width: 4
 
         Repeater {
             model: id_rudder.numberIndexs

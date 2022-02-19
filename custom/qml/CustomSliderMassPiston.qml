@@ -53,16 +53,26 @@ Item {
     Rectangle{
         id: rectangle
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: ScreenTools.defaultFontPixelWidth - 160
+        anchors.horizontalCenterOffset: ScreenTools.defaultFontPixelWidth - 220
         anchors.bottom:          parent.bottom
         anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 2
-        width: sliderRow.width + 130
+        width: sliderRow.width + 30
         height: coverColumn.height + 30
 
         border.color: "white"
-        radius: 8
-        color: "#801F1F1F"
+        radius: 12
+        color: "#020f21"
+        border.width: 3
 
+   /*    Image{
+           id: auv_draw
+           width: 340; height: 100
+           x: 100
+           y: 20
+           source: "/res/auv_pic.png"
+           fillMode:           Image.PreserveAspectFit
+       }
+*/
        Column{
            id: coverColumn
            anchors.centerIn: parent
@@ -89,6 +99,7 @@ Item {
                     QGCLabel {
                         text:                   "Value: "
                         anchors.verticalCenter: parent.verticalCenter
+                        font.bold: true
                     }
 
                     FactTextField {
@@ -105,6 +116,7 @@ Item {
                     QGCLabel {
                         text:                   "cm"
                         anchors.verticalCenter: parent.verticalCenter
+                        font.bold: true
                     }
 
 //                    QGCButton {
@@ -148,17 +160,23 @@ Item {
                     color: _activeVehicle.mass_shifterLSTail? "green" : "red"
                 }
 
+                Rectangle {
+                    width: 8; height: 15
+                    color: "transparent"
+                }
+
                 QGCLabel {
                     id:                  minLabelMassShifter
                     width:               ScreenTools.defaultFontPixelWidth * 4
                     text:                _minValueMassShifter.toFixed(precision)
                     horizontalAlignment: Text.AlignRight
+                    font.bold: true
 
                 }
 
                 QGCSlider {
                     id:                 slideMass_Shifter
-                    width:              parent.width - minLabelMassShifter.width - maxLabelMassShifter.width - 30 * 2
+                    width:              parent.width - minLabelPiston.width - maxLabelPiston.width - 35 * 2
                     maximumValue:       _maxValueMassShifter.toFixed(precision)
                     minimumValue:       _minValueMassShifter.toFixed(precision)
                     stepSize:           0.1
@@ -173,6 +191,7 @@ Item {
                     id:     maxLabelMassShifter
                     width:  ScreenTools.defaultFontPixelWidth * 5
                     text:   _maxValueMassShifter.toFixed(precision)
+                    font.bold: true
                 }
 
                 Rectangle {
@@ -221,12 +240,14 @@ Item {
                                 text:           qsTr("Duty Cycle: ") + _dutyCycle_Mass.toFixed(precision) + qsTr(" %")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
 
                             QGCLabel {
                                 text:           qsTr("rSpeed: ") + _rSpeed_Mass.toFixed(precision) + qsTr(" RPM")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
                         }
 
@@ -238,12 +259,14 @@ Item {
                                 text:           qsTr("Current: ") + _current_Mass.toFixed(precision) + qsTr(" mA")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
 
                             QGCLabel {
                                 text:           qsTr("Temp on Chip: ") + _tempOnChip_Mass.toFixed(precision) + qsTr(" oC")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
                         }
 
@@ -253,6 +276,7 @@ Item {
                                 text:           qsTr("Temp Motor: ") + _tempMotor_Mass.toFixed(precision) + qsTr(" oC")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
                         }
 
@@ -283,6 +307,7 @@ Item {
                     QGCLabel {
                         text:                   "Value: "
                         anchors.verticalCenter: parent.verticalCenter
+                        font.bold: true
                     }
 
                     FactTextField {
@@ -299,6 +324,7 @@ Item {
                     QGCLabel {
                         text:                   "cm"
                         anchors.verticalCenter: parent.verticalCenter
+                        font.bold: true
                     }
 
 //                    QGCButton {
@@ -347,6 +373,7 @@ Item {
                     width:               ScreenTools.defaultFontPixelWidth * 4
                     text:                _minValuePiston.toFixed(precision)
                     horizontalAlignment: Text.AlignRight
+                    font.bold: true
                 }
 
                 QGCSlider {
@@ -365,6 +392,7 @@ Item {
                     id:     maxLabelPiston
                     width:  ScreenTools.defaultFontPixelWidth * 5
                     text:   _maxValuePiston.toFixed(precision)
+                    font.bold: true
                 }
 
                 Rectangle {
@@ -413,12 +441,14 @@ Item {
                                 text:           qsTr("Duty Cycle: ") + _dutyCycle_Pis.toFixed(precision) + qsTr(" %")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
 
                             QGCLabel {
                                 text:           qsTr("rSpeed: ") + _rSpeed_Pis.toFixed(precision) + qsTr(" RPM")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
                         }
 
@@ -430,12 +460,14 @@ Item {
                                 text:           qsTr("Current: ") + _current_Pis.toFixed(precision) + qsTr(" mA")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
 
                             QGCLabel {
                                 text:           qsTr("Temp on Chip: ") + _tempOnChip_Pis.toFixed(precision) + qsTr(" oC")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
                         }
 
@@ -445,6 +477,7 @@ Item {
                                 text:           qsTr("Temp Motor: ") + _tempMotor_Pis.toFixed(precision) + qsTr(" oC")
                                 font.family:    ScreenTools.normalFontFamily
                                 font.pointSize:      10
+                                font.bold: true
                             }
                         }
                     }

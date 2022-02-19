@@ -38,22 +38,29 @@ Item {
         anchors.leftMargin: ScreenTools.defaultFontPixelWidth * 2.5
         anchors.bottom:         parent.bottom
         anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 180
-        width: 280; height: 180
+        width: 270; height: 180
         border.color: "white"
-        radius: 8
-        color: "#801F1F1F"
+        radius: 12
+        color: "#020f21"
+        border.width: 3
 
         Rectangle{
             id: rudderSlider
             anchors.verticalCenter: parent
             anchors.top:   coverRudderMeter.bottom
-            anchors.topMargin: ScreenTools.defaultFontPixelWidth  + 2
+            anchors.topMargin: ScreenTools.defaultFontPixelWidth - 5
             anchors.left: parent.left
-            anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 10
+            anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 5
 
             Row{
                width: parent.width
                spacing: 2
+
+               Rectangle{
+                   width: 8
+                   height: 10
+                   color: "transparent"
+               }
 
                QGCLabel{
                    id: minLabelRudder
@@ -65,7 +72,7 @@ Item {
 
                QGCSlider{
                    id:                 slideRudder
-                   width:              180
+                   width:              160
                    maximumValue:       _maxRudderAngle.toFixed(precision)
                    minimumValue:       _minRudderAngle.toFixed(precision)
                    stepSize:           0.1
@@ -88,11 +95,11 @@ Item {
         Rectangle{
             id: coverRudderMeter
             anchors.left: parent.left
-            anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 2
+            anchors.leftMargin: ScreenTools.defaultFontPixelWidth  + 5
             anchors.top:         parent.top
             anchors.bottomMargin:    ScreenTools.defaultFontPixelWidth + 2
             anchors.topMargin: ScreenTools.defaultFontPixelWidth + 2
-            width: 130; height: 130
+            width: 120; height: 130
             color: "transparent"
 
             RudderMeter {
@@ -109,7 +116,7 @@ Item {
                 top: parent.top
                 topMargin: 2
                 right: parent.right
-                rightMargin: 8
+                rightMargin: 15
                 bottom: parent.bottom
             }
 
@@ -120,13 +127,14 @@ Item {
                 spacing: 6
                 anchors.top: parent.top
                 anchors.topMargin: 10
+                anchors.left: parent
                 QGCLabel {
                     id: rudderStatusText
-                    x: coverStatus.width/2 - 35
-                    text:           qsTr("Rudder Status")
+                    x: coverStatus.width/2 - 49
+                    text:           qsTr("RUDDER STATUS")
                     font.family:    ScreenTools.normalFontFamily
                     font.bold:      true
-                    font.pointSize:      10
+                    font.pointSize:      12
                 }
 
                 Column{
@@ -137,24 +145,28 @@ Item {
                         text:           qsTr("  Speed:   ") + _speed.toFixed(precision) + qsTr(" RPM")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold: true
                     }
                     QGCLabel {
                         x: coverStatus.width/2 - 35
                         text:           qsTr("Temp:    ") + _temperature.toFixed(precision) + qsTr(" oC")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold: true
                     }
                     QGCLabel {
                         x: coverStatus.width/2 - 35
                         text:           qsTr("Voltage: ") + _voltage.toFixed(precision) + qsTr(" V")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold: true
                     }
                     QGCLabel {
                         x: coverStatus.width/2 - 42
                         text:           qsTr("  Load:      ") + _load.toFixed(precision) + qsTr(" N.m")
                         font.family:    ScreenTools.normalFontFamily
                         font.pointSize:      10
+                        font.bold: true
                     }
                 }
             }

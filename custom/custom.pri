@@ -101,7 +101,9 @@ DISTFILES += \
     $$PWD/res/Custom_clock.png \
     $$PWD/res/Custom_rudder.png \
     $$PWD/res/expand.png \
+    $$PWD/res/auv_pic.png \
     $$PWD/res/APMBrandImageAUV2000.png \
     $$PWD/res/viam_auv2000_full_white.svg \
     $$PWD/qml/VideoStreamingandRecording.qml \
-    $$PWD/qml/WaterFillInPiston.qml
+    $$PWD/qml/CustomWaterFillInPiston.qml \
+    $$PWD/qml/CustomPressureAndTempBoardARM2.qml
